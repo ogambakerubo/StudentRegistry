@@ -2,7 +2,7 @@ from flask import Flask, Blueprint
 
 from app.api.routes import BLUEPRINT
 from app.instance.config import APP_CONFIG
-from app.db_con import create_tables, super_user, destroy_tables
+from app.commands import commands
 
 
 def create_app(config_name):
@@ -15,10 +15,7 @@ def create_app(config_name):
     app.config.from_object(APP_CONFIG[config_name])
     app.url_map.strict_slashes = False
 
-    # destroy_tables()
-    create_tables()
-    super_user()
-
     app.register_blueprint(BLUEPRINT)
+    app.register_blueprint(commands)
 
     return app

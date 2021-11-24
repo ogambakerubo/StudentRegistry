@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash
 
 ENV = os.getenv("FLASK_ENV")
 DATABASE_URL = os.getenv("DATABASE_URL")
+SUPER_USER_PASSWORD = os.getenv("SUPER_USER_PASSWORD")
 
 
 if ENV == "testing":
@@ -30,9 +31,13 @@ def create_tables():
     curr = con.cursor()
     queries = tables()
 
-    for query in queries:
-        curr.execute(query)
-    con.commit()
+    try:
+        for query in queries:
+            curr.execute(query)
+        con.commit()
+        print("Creating tables ... Done!")
+    except:
+        print("Failed to create tables")
 
 
 def destroy_tables():
@@ -47,7 +52,7 @@ def destroy_tables():
         for query in queries:
             curr.execute(query)
         con.commit()
-        print("Destroying test tables...Done ")
+        print("Destroying test tables...Done")
     except:
         print("Failed to Destroy tables")
 
@@ -90,7 +95,7 @@ def tables():
 
 
 def super_user():
-    password = generate_password_hash("P@ssword123")
+    password = generate_password_hash(SUPER_USER_PASSWORD)
     user_admin = {
         "first_name": "John",
         "last_name": "Doe",
@@ -119,4 +124,4 @@ def super_user():
         conn.commit()
         print("Super user created")
     except:
-        return "User already exists"
+        print("User already exists")

@@ -25,15 +25,15 @@ Create two Postgres databases and change the values of the database URLs in the 
 
 ```bash
 sudo -u postgres psql
-postgres=# create database studentsregistry;
-postgres=# create database teststudentsregistry;
+postgres=# create database studentregistry;
+postgres=# create database teststudentregistry;
 ```
 
 ### Create a virtual environment and activate it
 
 ```bash
 python3 -m venv env
-source venv/bin/activate
+source env/bin/activate
 ```
 
 ### Install all the dependencies using the command
@@ -51,13 +51,27 @@ export FLASK_CONFIG="development"
 export DATABASE_URL="dbname='your-database' host='localhost' port='5432' user='your-username' password='your-password'"
 export DATABASE_URL_TEST="dbname='your-test-database' host='localhost' port='5432' user='your-username' password='your-password'"
 export SECRET_KEY="secret-key-goes-here"
+export SUPER_USER_PASSWORD="initial-admin-password"
 ```
 
 ### How to Run the App
 
 ```bash
-source venv/bin/activate
+source env/bin/activate
 flask run
+```
+
+### How to create the tables and the admin
+
+```bash
+flask commands create-tables
+flask commands create-admin
+```
+
+Optionally, you can drop the tables
+
+```bash
+flask commands destroy-tables
 ```
 
 ### Test the application
