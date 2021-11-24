@@ -2,7 +2,7 @@
 
 ### What it does
 
-The Students Registry is a simple registry that records students' details and grades.
+The Student Registry is a simple registry that records students' details and grades.
 
 ### Tech/framework used
 
@@ -14,8 +14,8 @@ The Students Registry is a simple registry that records students' details and gr
 ### Getting Started
 
 ```bash
-git clone https://github.com/ogambakerubo/StudentsRegistry.git
-cd StudentsRegistry
+git clone https://github.com/ogambakerubo/StudentRegistry.git
+cd StudentRegistry
 touch .env
 ```
 
