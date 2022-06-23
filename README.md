@@ -80,7 +80,7 @@ Tests are run with pytest or py.test in the root folder.
 Set FLASK_CONFIG to testing on your .env file before running tests
 
 ```bash
-source venv/bin/activate
+source env/bin/activate
 pytest --cov=app/
 ```
 
