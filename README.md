@@ -54,11 +54,10 @@ export SECRET_KEY="secret-key-goes-here"
 export SUPER_USER_PASSWORD="initial-admin-password"
 ```
 
-### How to Run the App
+To set the environment variables
 
 ```bash
-source env/bin/activate
-flask run
+source .env
 ```
 
 ### How to create the tables and the admin
@@ -72,6 +71,13 @@ Optionally, you can drop the tables
 
 ```bash
 flask commands destroy-tables
+```
+
+### How to Run the App
+
+```bash
+source env/bin/activate
+flask run
 ```
 
 ### Test the application
